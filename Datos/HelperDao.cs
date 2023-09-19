@@ -63,7 +63,24 @@ namespace WindowsFormsApp1.Datos
             connection.Close();
 
             return (int)parameter.Value;
+        }
 
+        public DataTable Consultar(string nombreSP)
+        {
+            connection.Open();
+
+            // configuro el comando con el SP pasado por parametros
+            SqlCommand command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = nombreSP;
+
+            DataTable table = new DataTable();
+            table.Load(command.ExecuteReader());
+
+            connection.Close();
+
+            return table;
         }
     }
 }

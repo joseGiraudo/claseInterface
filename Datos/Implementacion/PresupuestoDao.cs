@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,16 @@ namespace WindowsFormsApp1.Datos.Implementacion
 
         public List<Producto> ObtenerProductos()
         {
-            throw new NotImplementedException();
+            List<Producto> lProductos = new List<Producto>();
+            DataTable table = HelperDao.GetInstance().Consultar("SP_CONSULTAR_PRODUCTOS");
+
+            foreach(DataRow row in table.Rows)
+            {
+                Producto p = new Producto(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToDouble(row[2]));
+                lProductos.Add(p);
+            }
+
+            return lProductos;
         }
 
         public int ObtenerProximoPresupuesto()
