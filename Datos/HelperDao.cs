@@ -36,6 +36,11 @@ namespace WindowsFormsApp1.Datos
         }
 
         // Metodos de la clase Helper
+
+        public SqlConnection GetConnection()
+        {
+            return connection;
+        }
         
         public int ConsultarEscalar(string nombreSP, string nombreParamOut)
         {
