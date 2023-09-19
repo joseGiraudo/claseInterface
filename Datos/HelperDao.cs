@@ -10,6 +10,7 @@ namespace WindowsFormsApp1.Datos
 {
     public class HelperDao
     {
+        // Clase Singleton
 
         private static HelperDao instancia;
 
@@ -35,7 +36,7 @@ namespace WindowsFormsApp1.Datos
         }
 
         // Metodos de la clase Helper
-
+        
         public int ConsultarEscalar(string nombreSP, string nombreParamOut)
         {
             // abro la conexion
